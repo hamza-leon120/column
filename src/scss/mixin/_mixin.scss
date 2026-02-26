@@ -1,0 +1,107 @@
+@mixin medai ($point) {
+    @if $point ==mobail {
+        @media (max-width : 767px) {
+            @content;
+        }
+    }
+
+    @else if $point ==small {
+        @media (min-width : 768px) {
+            @content;
+        }
+    }
+
+    @else if $point ==max-medium {
+        @media (max-width : 992px) {
+            @content;
+        }
+    }
+
+    @else if $point ==medium {
+        @media (min-width : 992px) {
+            @content;
+        }
+    }
+
+    @else if $point ==max-large {
+        @media (max-width : 1200px) {
+            @content;
+        }
+    }
+
+    @else if $point ==large {
+        @media (min-width : 1200px) {
+            @content;
+        }
+    }
+}
+
+.heading {
+    font-size: 60px;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 95px;
+
+    @include medai(max-medium) {
+        margin-bottom: 40px;
+    }
+
+    @include medai(mobail) {
+        font-size: 32px;
+    }
+}
+
+.arrows {
+    width: 96%;
+    position: absolute;
+    z-index: 10000000000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+
+    div {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.6);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            color: #FFFFFF;
+            font-size: 16px;
+        }
+    }
+}
+
+.right-s {
+    width: 48.70%;
+    height: 542px;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include medai(max-medium) {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    @include medai (mobail) {
+        height: 271px;
+    }
+}
+
+
+@mixin button ($w, $h, $r) {
+    width: $w;
+    height: $h;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: $r;
+}

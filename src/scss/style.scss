@@ -1,0 +1,738 @@
+@use "./layout/layout";
+@use "./mixin/mixin" as *;
+
+header {
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 105px;
+        > svg:nth-child(1) {
+            display: none;
+            @include medai (max-medium ) {
+                display: block;
+                font-size: 30px;
+                color: #000000;
+            }
+        }
+        ul {
+            list-style: none;
+            display: flex;
+            @include medai (mobail) {
+                position: absolute;
+                top: 105px;
+                left: 0px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background-color: #1B353D;
+                overflow: hidden;
+                height: 0px;
+                transition: height 0.3s ease;
+                &.active {
+                    height: 310px;
+                }
+            }
+            li {
+                margin-right: 24px;
+                cursor: pointer;
+                @include medai (mobail) {
+                    margin: 0;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 62px;
+                    border-bottom: 1px #FFFFFF solid;
+                }
+                a {
+                    font-weight: 600;
+                    font-size: 16px;
+                    color: #404040;
+                    text-decoration: none;
+                    @include medai (mobail) {
+                        color: #FFFFFF;
+                    }
+                }
+            }
+        }
+        .search-user {
+            display: flex;
+            align-items: center;
+            .search {
+                input {
+                    width: 256px;
+                    height: 45px;
+                    border: #D9DCE0 1px solid;
+                    border-radius: 5px;
+                    @include medai (max-medium ){
+                        display: none;
+                    }
+                }
+                svg {
+                    font-size: 18px;
+                    color: #242243;
+                    position: relative;
+                    left: -30px;
+                    cursor: pointer;
+                }
+            }
+            .user {
+                cursor: pointer;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #0F756B;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                svg {
+                    color: #F5F5F5;
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+}
+
+.hero {
+    background-image: url(../img/image\ 22.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    @include medai(max-medium){
+        height: auto;
+    }
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        gap: 20px;
+        @include medai(max-medium){
+            flex-direction: column;
+            gap: 50px;
+        }
+        @include medai(mobail) {
+            padding-top: 40px;
+        }
+        .first {
+            @include medai(max-medium){
+                text-align: center;
+            }
+            > p:nth-child(1) {
+                font-size: 60px;
+                font-weight: bold;
+                color: #F5F5F5;
+                margin-bottom: 35px;
+                @include medai(mobail) {
+                    font-size: 32px;
+                }
+            }
+            > p:nth-child(2) {
+                font-size: 32px;
+                font-weight: 500;
+                color: #F5F5F5;
+                margin-bottom: 35px;
+                @include medai(mobail) {
+                    font-size: 18px;
+                }
+            }
+            .buttons {
+                display: flex;
+                @include medai(max-medium) {
+                    width: fit-content;
+                    margin: auto;
+                }
+                .button:nth-child(1) {
+                    @include button (97px,44px,5px);
+                    border: #FFFFFF 1px solid;
+                    margin-right: 32px;
+                    p {
+                        color: #FFFFFF;
+                        font-size: 16px;
+                        font-weight: 600;
+                    }
+                }
+                .button:nth-child(2) {
+                    @include button (141px, 44px,5px);
+                    background-color: #FFFFFF;
+                    p {
+                        color: #1B353D;
+                        font-size: 16px;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+        .secound {
+            white-space: nowrap;
+            overflow: hidden;
+            height: 457px;
+            width: 85%;
+            align-self: flex-end;
+            position: relative;
+            @include medai(max-medium){
+                align-self: auto;
+                width: 100%;
+            }
+            @include medai(mobail){
+                height: 393px;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                background-image: url(../img/image\ 20.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                border-radius: 10px 10px 0 0 ;
+                transition: transform 0.3s ease;
+            }
+        }
+    }
+}
+
+.enrol {
+    padding: 121px 0 117px 0;
+    .container {
+        > div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+            @include medai(max-medium){
+                flex-direction: column;
+            }
+        }
+        .right {
+            width: 589px;
+            @include medai(max-medium) {
+                width: 100%;
+                text-align: center;
+            }
+            p {
+                color: #333333;
+            }
+            p:nth-child(1){
+                font: {
+                    size: 60px;
+                    weight: bold ;
+                }
+                @include medai(mobail) {
+                    font-size: 24px;
+                }
+            }
+            p {
+                font-size: 32px;
+                margin-bottom: 32px;
+                @include medai(mobail) {
+                    font-size: 17px;
+                }
+            }
+        }
+        .left {
+            width: 604px;
+            height: 580px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0px 0px 25px 0 rgba(17, 24, 39, 0.18);
+            padding: 43px;
+            border-radius: 10px;
+            @include medai(max-medium) {
+                width: 100%;
+                height: 545px;
+            }
+            > p {
+                font: {
+                    size: 24px;
+                    weight: 600 ;
+                }
+                color: #333333;
+                margin-bottom: 56px;
+                @include medai (mobail) {
+                    font-size: 21px;
+                }
+            }
+            input {
+                background-color: #FAFAFC;
+                width: 100%;
+                height: 59px;
+                border-radius: 5px;
+                padding-left: 17px;
+                border: 1.07px #D9DCE0 solid;
+                margin-bottom: 30px;
+            }
+            .button {
+                align-self: flex-end;
+                margin-top: 50px;
+                @include button(241px,52px,5px);
+                background-color: #1B353D;
+                @include medai(mobail) {
+                    width: 100%;
+                }
+                p {
+                    color: #FFFFFF;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+.offer {
+    .container {
+        > div {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            @include medai(max-medium) {
+                flex-direction: column;
+            }
+            .right-s {
+                background-image: url(../img/four.png);
+            }
+        }
+    }
+}
+
+.trending {
+    padding: 121px 0 117px 0;
+    .container {
+        .grid {
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            .Course {
+                border-radius: 10px;
+                display: inline-block;
+                width: 31.70940170940171%;
+                height: 302px;
+                margin-right: 2.393162393162393%;
+                position: relative;
+                @include medai(mobail) {
+                    height: 215px;
+                }
+                &:not(&.active):after {
+                    border-radius: 10px;    
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    background-color: #000000;
+                    opacity: 0.5;
+                }
+                img {
+                    border-radius: 10px;
+                    width: 100%;
+                    height: 100%;
+                }
+                p {
+                    position: absolute;
+                    bottom: 12px;
+                    left: 24px;
+                    color: #FFFFFF;
+                    font: {
+                        weight: 500;
+                        size: 20px;
+                    }
+                    @include medai (mobail) {
+                        font-size: 12px;
+                        left: 5px ;
+                        bottom: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.exams {
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include medai(max-medium) {
+            flex-direction: column;
+        }
+        .right-s {
+            background-image: url(../img/thirteen.png);
+            @include medai(max-medium) {
+                margin-top: 50px;
+            }
+        }
+    }
+}
+
+
+.publication {
+    padding: 131px 0 150px 0;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include medai(max-medium) {
+                flex-direction: column;
+        }
+        .right-s {
+            background-image: url(../img/fourteen.png);
+        }
+    }
+}
+
+.recent {
+    .container {
+        .grid {
+            position: relative;
+            white-space: nowrap;
+            overflow: hidden;
+            > div {
+                transition: transform 0.3s ease;
+                .book {
+                    display: inline-block;
+                    width: 22.74193548387097%;
+                    height: 302px;
+                    margin-right: 3.064516129032258%;
+                    position: relative;
+                    @include medai(mobail) {
+                        height: 215px;
+                    }
+                    img {
+                        border-radius: 15px;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    p {
+                        position: absolute;
+                        bottom: 12px;
+                        left: 24px;
+                        color: #FFFFFF;
+                        font: {
+                            weight: 500;
+                            size: 20px;
+                        }
+                        @include medai (mobail) {
+                            font-size: 12px;
+                            left: 5px ;
+                            bottom: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.intructors {
+    padding: 131px 0 150px 0;
+    .container {
+        .heading {
+            margin-bottom: 100px;
+            @include medai(mobail) {
+                margin-bottom: 70px;
+            }
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+            @include medai(max-medium) {
+                grid-template-columns: 1fr 1fr;
+                grid-column: 1fr 1fr;
+                gap: 90px;
+            }
+            > div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .intructors-img {
+                    width: 56px;
+                    height: 56px;
+                    border-radius: 50%;
+                    margin-bottom: 35px;
+                    img {
+                        border-radius: 50%;
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                .job {
+                    font: {
+                        size: 22px;
+                        weight: 300;
+                    }
+                    color: #495057;
+                    margin-bottom: 18px;
+                    @include medai(mobail) {
+                        font-size: 12px
+                    }
+                }
+                .name {
+                    font: {
+                        size: 25px;
+                        weight: 500;
+                    }
+                    color: #495057;
+                    @include medai(mobail) {
+                        font-size: 16px
+                    }
+                }
+            }
+        }
+    }
+}
+
+.get-in-touch {
+    padding-bottom: 90px;
+    .container {
+        .heading {
+            margin-bottom: 45px;
+        }
+        > p:nth-child(2) {
+            font-size: 24px;
+            color: #333333;
+            text-align: center;
+            margin-bottom: 90px;
+            @include medai (mobail) {
+                font-size: 17px;
+                margin-bottom: 53px;
+            }
+        }
+        .print {
+            display: flex;
+            justify-content: space-around;
+            @include medai (max-medium) {
+                flex-direction: column-reverse;
+                align-items: center;
+            }
+            .left {
+                width: 33.50951374207188%;
+                height: 428px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                border: 1px rgba(0, 0, 0, 0.1) solid;
+                border-radius: 10px;
+                @include medai(max-large) {
+                    width: 42%;
+                }
+                @include medai (max-medium) {
+                    width: 90%;
+                    margin-top: 60px;
+                }
+                .infos {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    .icon {
+                        background-color: rgba(112, 112, 112, 0.25);
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 27px;
+                        height: 27px;
+                        svg {
+                            color: #1D2319;
+                            font-size: 15px;
+                        }
+                    }
+                    .info {
+                        width: 85%;
+                        p:nth-child(1) {
+                            color: #333333;
+                            font: {
+                                size: 22px;
+                                weight: 600;
+                            }
+                            @include medai (mobail) {
+                                font-size: 17px;
+                            }
+                        } 
+                        p:nth-child(2) {
+                            color: #333333;
+                            font-size: 18px;
+                            @include medai (mobail) {
+                                font-size: 15px;
+                            }
+                        } 
+                    }
+                }
+                .icons {
+                    width: 70%;
+                    display: flex;
+                    justify-content: space-around;
+                    .icon {
+                        background-color: rgba(112, 112, 112, 0.25);
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        svg {
+                            font-size: 20px;
+                            color: #1B353D;
+                        }
+                    }
+                }
+            }
+            .right {
+                width: 52.5369978858351%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 512px;
+                @include medai (max-medium) {
+                    width: 100%;
+                }
+                input {
+                    padding-left: 15px;
+                    width: 100%;
+                    height: 60px;
+                    border: 1px rgba(0, 0, 0, 0.1) solid;
+                    border-radius: 3.79px;
+                    &:nth-child(4) {
+                        height: 155px;
+                    }
+                    &::placeholder {
+                        color: rgba(0, 0, 0, 0.3);
+                        font-size: 20px;
+                    }
+                }
+                .button {
+                    @include button(228px,60px,5px);
+                    background-color: #1B353D;
+                    align-self: flex-end;
+                    p {
+                        color: #FFFFFF;
+                        font-size: 22px;
+                    }
+                    @include medai (mobail) {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer {
+    background-color: #1B353D;
+    padding: 70px 0 70px 0;
+    .container {
+        @include medai (max-medium) {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .print {
+            display: flex;
+            justify-content: space-between;
+            @include medai (mobail) {
+                flex-direction: column-reverse;
+            }
+            .left {
+                width: 22.63843648208469%;
+                @include medai (mobail) {
+                    width: 60%;
+                    margin-top: 52px;
+                }
+                p {
+                    font-size: 16px;
+                    margin: 20px 0 20px 0;
+                    color: #FFFFFF;
+                }
+                .icons {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 65%;
+                    svg {
+                        font-size: 24px;
+                        color: #FFFFFF;
+                    }
+                }
+            }
+            .right {
+                width: 40.39087947882736%;
+                display: flex;
+                justify-content: space-between;
+                @include medai (mobail) {
+                    width: 100%;
+                }
+                ul {
+                    list-style: none;
+                    li {
+                        font-size: 16px;
+                        color: #FFFFFF;
+                        margin-bottom: 24px;
+                        span {
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+        .last {
+            width: 44.46254071661238%;
+            margin: 75px auto 0 auto;
+            @include medai (max-medium) {
+                width: 100%;
+                margin: 0px 0px 36px 0px;
+            }
+            > p {
+                text-align: center;
+                font-size: 24px;
+                color: #FFFFFF;
+                margin-bottom: 18px;
+            }
+            div {
+                display: flex;
+                input {
+                    padding-left: 18px;
+                    width: 76.37362637362637%;
+                    height: 52px;
+                    &::placeholder {
+                        font: {
+                            size: 14px;
+                            weight: 500;
+                        }
+                        color: #3B7586;
+                    }
+                }
+                .button {
+                    @include button(23.07692307692308%,52px,0px);
+                    background-color: #3B7586;
+                    p {
+                        font-size: 19px;
+                        color: #FFFFFF;
+                        @include medai (mobail) {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.up {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(112, 112, 112, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    svg {
+        color: #1D2319;
+    }
+}
