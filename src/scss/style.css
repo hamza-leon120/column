@@ -186,6 +186,7 @@ header .container ul {
     overflow: hidden;
     height: 0px;
     transition: height 0.3s ease;
+    z-index: 100000000;
   }
   header .container ul.active {
     height: 310px;
