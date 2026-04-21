@@ -2,9 +2,9 @@ import imgOne from "../img/twentythree.jpg"
 import imgTwo from "../img/twentyfour.jpg"
 import imgThee from "../img/twentyfive.jpg"
 import imgFour from "../img/twentysix.jpg"
-function Intructors (){
+function Intructors (prop){
     return (
-        <section className="intructors" id = "Instuctors">
+        <section className="intructors" id = "Instuctors" ref={function(ele){return prop.data[7] = ele}}>
             <div className="container">
                 <p className="heading">Notable Intructors</p>
                 <div className="grid">

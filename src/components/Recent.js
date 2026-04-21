@@ -10,7 +10,7 @@ import imgNine from "../img/twentytwo.jpg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons"
 import { useEffect, useRef, useState } from "react"
-function Recent(){
+function Recent(prop){
     let parent  = useRef(null)
     let child = useRef(null)
     let [translate,setTranslate] = useState("0px")
@@ -56,7 +56,7 @@ function Recent(){
         setTranslate(`-${(width + gap) * num}px`)
     },[num])
     return (
-        <section className="recent" id="Publications">
+        <section className="recent" id="Publications" ref={function(ele){return prop.data[6] = ele}}>
             <div className="container">
                 <p className="heading">Recent Publications</p>
                 <div ref={parent } className="grid">

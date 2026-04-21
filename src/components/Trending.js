@@ -9,11 +9,14 @@ import imgeight from "../img/twelve.jpg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons"
 import { useEffect, useRef, useState } from "react"
-function Trending() {
-    let e = useRef(null)
-    let [translate, setTranslate] = useState("0px")
-    let [transition, settransition] = useState("transform 0.3s ease")
+function Trending(prop) {
+    let slider = useRef(null)
+    let [translate, setTranslate] = useState(0)
+    let [number, setNumber] = useState(0)
+    let [transition, setTransition] = useState("transform 0.2s ease")
     let [arr, setarr] = useState([
+        { id: '7 clone', img: imgseven, name: "Programming" },
+        { id: '8 clone', img: imgeight, name: "Photography" },
         { id: 1, img: imgOne, name: "Game Development" },
         { id: 2, img: imgTwo, name: "Marketing Strategy" },
         { id: 3, img: imgThree, name: "Data Analysis With Python" },
@@ -22,59 +25,72 @@ function Trending() {
         { id: 6, img: imgsix, name: "Design" },
         { id: 7, img: imgseven, name: "Programming" },
         { id: 8, img: imgeight, name: "Photography" },
+        { id: "1 clone", img: imgOne, name: "Game Development" }, // 8
+        { id: "2 clone", img: imgTwo, name: "Marketing Strategy" },
+
     ])
     let arrJxs = arr.map(function (el, index) {
         return (
-            <div ref={e} className={index === 1 ? "Course active" : "Course"} key={el.id} style={{ transform: `translateX(${translate})`, transition: `${transition}` }}>
+            <div className={index - 2 === number ? "Course active" : "Course"} key={el.id}>
                 <img src={el.img} alt="" />
                 <p>{el.name}</p>
             </div>
         )
     })
-    function left() {
-        let width = parseFloat(window.getComputedStyle(e.current).width)
-        let gap = parseFloat(window.getComputedStyle(e.current).marginRight)
-        setTranslate(`${width + gap}px`)
-        setTimeout(() => {
-            settransition("none")
-            setTranslate('0px')
-            setarr(function (prv) {
-                let newArr = [...prv]
-                newArr.unshift(newArr.pop())
-                return newArr
-            })
-        }, 300);
-        settransition("transform 0.3s ease")
+    function toTheRight() {
+        setNumber(function(prv){
+            return prv + 1
+        })
     }
-    function right() {
-        let width = parseFloat(window.getComputedStyle(e.current).width)
-        let gap = parseFloat(window.getComputedStyle(e.current).marginRight)
-        setTranslate(`-${width + gap}px`)
-        setTimeout(() => {
-            settransition("none")
-            setTranslate('0px')
-            setarr(function (prv) {
-                let newArr = [...prv]
-                newArr.push(newArr.shift())
-                return newArr
-            })
-        }, 300);
-        settransition("transform 0.3s ease")
+    function toTheleft() {
+        setNumber(function(prv){
+            return prv - 1
+        })
     }
+    useEffect(function(){
+        let card = slider.current.children[0]
+        let width = card.offsetWidth
+        let margin = parseInt(window.getComputedStyle(card).marginRight)
+        setTranslate((margin + width))
+        if(number <= arr.length - 4){
+            if(number === arr.length - 4) {
+                setTimeout(function(){
+                    setTransition("0s")
+                    setNumber(0)
+                    setTimeout(function(){
+                        setTransition("transform 0.2s ease")
+                    },10)
+                },300)
+            }
+        }
+        if(number >= -1) {
+            if(number === -1){
+                setTimeout(function(){
+                    setNumber(arr.length - 5)
+                    setTransition("0s")
+                    setTimeout(function(){
+                        setTransition("transform 0.2s ease")
+                    },10)
+                },300)
+            }
+        }
+    },[number])
     return (
-        <section className="trending" id="Courses">
+        <section className="trending" id="Courses" ref={function (ele) { return prop.data[3] = ele }}>
             <div className="container">
                 <p className="heading">Trending Courses</p>
                 <div className="grid">
                     <div className="arrows">
-                        <div className="left" onClick={left}>
+                        <div className="left" onClick={toTheleft}>
                             <FontAwesomeIcon icon={faAngleLeft} />
                         </div>
-                        <div className="right" onClick={right}>
+                        <div className="right" onClick={toTheRight}>
                             <FontAwesomeIcon icon={faAngleRight} />
                         </div>
                     </div>
-                    {arrJxs}
+                    <div ref={slider} className="slider"  style={{ transform: `translateX(${-translate  * number}px)`, transition: `${transition}` }}>
+                        {arrJxs}
+                    </div>
                 </div>
             </div>
         </section>

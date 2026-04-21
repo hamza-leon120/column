@@ -2,6 +2,18 @@
 @use "./mixin/mixin" as *;
 
 header {
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10000000;
+        background-color: rgba(112, 112, 112);
+        width: 100%;
+        transition: opacity 0.5s ease; 
+        a {
+            color: white !important;
+        }
+    }
     .container {
         display: flex;
         justify-content: space-between;
@@ -26,11 +38,12 @@ header {
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
-                background-color: #1B353D;
+                background-color: rgba(112, 112, 112);
                 overflow: hidden;
                 height: 0px;
                 transition: height 0.3s ease;
                 z-index: 100000000;
+                border-radius: 0 0 25px 35px;
                 &.active {
                     height: 310px;
                 }
@@ -102,10 +115,7 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 600px;
-    @include medai(max-medium){
-        height: auto;
-    }
+    height: 88.69vh;
     .container {
         display: flex;
         justify-content: space-between;
@@ -169,12 +179,10 @@ header {
             }
         }
         .secound {
-            white-space: nowrap;
-            overflow: hidden;
             height: 457px;
             width: 85%;
-            align-self: flex-end;
             position: relative;
+            overflow: hidden;
             @include medai(max-medium){
                 align-self: auto;
                 width: 100%;
@@ -182,14 +190,19 @@ header {
             @include medai(mobail){
                 height: 393px;
             }
-            img {
+            .slider {
+                white-space: nowrap;
                 width: 100%;
                 height: 100%;
-                background-image: url(../img/image\ 20.png);
-                background-repeat: no-repeat;
-                background-size: cover;
-                border-radius: 10px 10px 0 0 ;
                 transition: transform 0.3s ease;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    background-image: url(../img/image\ 20.png);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    border-radius: 10px ;
+                }
             }
         }
     }
@@ -265,17 +278,16 @@ header {
                 border: 1.07px #D9DCE0 solid;
                 margin-bottom: 30px;
             }
-            .button {
+            button {
+                border: none;
                 align-self: flex-end;
                 margin-top: 50px;
                 @include button(241px,52px,5px);
                 background-color: #1B353D;
+                color: #FFFFFF;
+                font-size: 16px;
                 @include medai(mobail) {
                     width: 100%;
-                }
-                p {
-                    color: #FFFFFF;
-                    font-size: 16px;
                 }
             }
         }
@@ -303,48 +315,51 @@ header {
     padding: 121px 0 117px 0;
     .container {
         .grid {
-            white-space: nowrap;
-            overflow: hidden;
             position: relative;
-            .Course {
-                border-radius: 10px;
-                display: inline-block;
-                width: 31.70940170940171%;
-                height: 302px;
-                margin-right: 2.393162393162393%;
-                position: relative;
-                @include medai(mobail) {
-                    height: 215px;
-                }
-                &:not(&.active):after {
-                    border-radius: 10px;    
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    content: "";
-                    width: 100%;
-                    height: 100%;
-                    background-color: #000000;
-                    opacity: 0.5;
-                }
-                img {
+            overflow: hidden;
+            .slider {
+                white-space: nowrap;
+                .Course {
                     border-radius: 10px;
-                    width: 100%;
-                    height: 100%;
-                }
-                p {
-                    position: absolute;
-                    bottom: 12px;
-                    left: 24px;
-                    color: #FFFFFF;
-                    font: {
-                        weight: 500;
-                        size: 20px;
+                    display: inline-block;
+                    width: 31.70940170940171%;
+                    height: 302px;
+                    margin-right: 2.393162393162393%;
+                    position: relative;
+                    transform: translateX(-108%);
+                    @include medai(mobail) {
+                        height: 215px;
                     }
-                    @include medai (mobail) {
-                        font-size: 12px;
-                        left: 5px ;
-                        bottom: 15px;
+                    &:not(&.active):after {
+                        border-radius: 10px;    
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        content: "";
+                        width: 100%;
+                        height: 100%;
+                        background-color: #000000;
+                        opacity: 0.5;
+                    }
+                    img {
+                        border-radius: 10px;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    p {
+                        position: absolute;
+                        bottom: 12px;
+                        left: 24px;
+                        color: #FFFFFF;
+                        font: {
+                            weight: 500;
+                            size: 20px;
+                        }
+                        @include medai (mobail) {
+                            font-size: 12px;
+                            left: 5px ;
+                            bottom: 15px;
+                        }
                     }
                 }
             }
@@ -524,7 +539,7 @@ header {
                     width: 42%;
                 }
                 @include medai (max-medium) {
-                    width: 90%;
+                    width: 95%;
                     margin-top: 60px;
                 }
                 .infos {
@@ -586,35 +601,41 @@ header {
             }
             .right {
                 width: 52.5369978858351%;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
                 height: 512px;
                 @include medai (max-medium) {
                     width: 100%;
                 }
-                input {
-                    padding-left: 15px;
-                    width: 100%;
-                    height: 60px;
-                    border: 1px rgba(0, 0, 0, 0.1) solid;
-                    border-radius: 3.79px;
-                    &:nth-child(4) {
-                        height: 155px;
+                form {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    input,
+                    textarea {
+                        padding-left: 15px;
+                        width: 100%;
+                        height: 60px;
+                        border: 1px rgba(0, 0, 0, 0.1) solid;
+                        border-radius: 3.79px;
+                        &:nth-child(4) {
+                            height: 155px;
+                        }
+                        &::placeholder {
+                            color: rgba(0, 0, 0, 0.3);
+                            font-size: 20px;
+                        }
                     }
-                    &::placeholder {
-                        color: rgba(0, 0, 0, 0.3);
-                        font-size: 20px;
-                    }
+                        textarea {
+                            padding-top: 15px;
+                        }
                 }
-                .button {
+                button {
                     @include button(228px,60px,5px);
+                    border: none;
                     background-color: #1B353D;
                     align-self: flex-end;
-                    p {
-                        color: #FFFFFF;
-                        font-size: 22px;
-                    }
+                    color: #FFFFFF;
+                    font-size: 22px;
                     @include medai (mobail) {
                         width: 100%;
                     }
@@ -723,6 +744,7 @@ footer {
 }
 
 .up {
+    position: fixed;
     bottom: 20px;
     right: 20px;
     width: 45px;
@@ -733,7 +755,34 @@ footer {
     align-items: center;
     border-radius: 10px;
     cursor: pointer;
+    transition: opacity 0.6s ease;
     svg {
         color: #1D2319;
+    }
+}
+
+.percentage {
+    position: fixed;
+    bottom : 20px ;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #3B7586;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000000;
+    color: black;
+    box-shadow: 0px 0px 20px 0 black;
+    transition: opacity 0.6s ease;
+    div {
+        width: 85%;
+        height: 85%;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
     }
 }

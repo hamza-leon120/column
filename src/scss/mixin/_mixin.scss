@@ -36,6 +36,13 @@
     }
 }
 
+section,
+.hero {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease ;
+}
+
 .heading {
     font-size: 60px;
     color: #333333;

@@ -1,8 +1,8 @@
 import CoButton from "./CoButton"
 
-function Enrol(){
+function Enrol(prop){
     return(
-        <section className="enrol">
+        <section className="enrol" ref={function(ele){return prop.data[1] = ele}}>
             <div className="container">
                 <p className="heading">Enrol for a couse now</p>
                 <div>
@@ -13,10 +13,12 @@ function Enrol(){
                     </div>
                     <div className="left">
                         <p>Registration for enrolment</p>
-                        <input type="text" placeholder="Full name"/>
-                        <input type="text" placeholder="Email"/>
-                        <input type="text" placeholder="Phone number"/>
-                        <CoButton content = "Apply Now"/>
+                        <form action = "">
+                            <input name = "name" type="text" pattern="[a-zA-Z\s]+" placeholder="Full name" required/>
+                            <input name = "email" type="email" placeholder="Email" required/>
+                            <input name = "Phone number" type="tel" pattern="(05|06|07)[0-9]{8}" placeholder="Phone number" required/>
+                            <button type="submit">Apply Now</button>
+                        </form>
                     </div>
                 </div>
             </div>

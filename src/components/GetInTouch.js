@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEnvelope, faMessage, faPhone} from "@fortawesome/free-solid-svg-icons"
+import { faEnvelope, faMessage, faPhone } from "@fortawesome/free-solid-svg-icons"
 import { faFacebook, faXTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons"
 import CoButton from "./CoButton"
-function GetInTouch () {
+function GetInTouch(prop) {
     return (
-        <section className="get-in-touch" id="Contact-Us">
+        <section className="get-in-touch" id="Contact-Us" ref={function (ele) { return prop.data[8] = ele }}>
             <div className="container">
                 <p className="heading">get in touch</p>
                 <p>Lorem ipsum dolor sit at, consectetur adipielit. Facilisi fermentum, dignissim pharetra. Aliquam Lorem ipsum dolor sit at, consectetur adipielit. Facilisi fermentum, dignissim pharetra. Aliquam </p>
@@ -50,11 +50,13 @@ function GetInTouch () {
                         </div>
                     </div>
                     <div className="right">
-                        <input type="text" placeholder="Name" />
-                        <input type="text" placeholder="Email" />
-                        <input type="text" placeholder="Subject" />
-                        <input type="text" placeholder="Input Text" />
-                        <CoButton content = "Send" />
+                        <form action="">
+                            <input name = "name" type="text" pattern="[a-zA-Z\s]+" placeholder="Name" required/>
+                            <input name = "email" type="email" placeholder="Email" required/>
+                            <input name = "subject" type="text" placeholder="Subject" required/>
+                            <textarea name = "message" placeholder="Input Text" required></textarea>
+                            <button type="submit">Send</button>
+                        </form>
                     </div>
                 </div>
             </div>

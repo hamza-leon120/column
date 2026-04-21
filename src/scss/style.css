@@ -1,3 +1,10 @@
+section,
+.hero {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
 .heading {
   font-size: 60px;
   color: #333333;
@@ -153,6 +160,18 @@ body {
   }
 }
 
+header.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000000;
+  background-color: rgb(112, 112, 112);
+  width: 100%;
+  transition: opacity 0.5s ease;
+}
+header.fixed a {
+  color: white !important;
+}
 header .container {
   display: flex;
   justify-content: space-between;
@@ -182,11 +201,12 @@ header .container ul {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: #1B353D;
+    background-color: rgb(112, 112, 112);
     overflow: hidden;
     height: 0px;
     transition: height 0.3s ease;
     z-index: 100000000;
+    border-radius: 0 0 25px 35px;
   }
   header .container ul.active {
     height: 310px;
@@ -260,12 +280,7 @@ header .container .search-user .user svg {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 600px;
-}
-@media (max-width: 992px) {
-  .hero {
-    height: auto;
-  }
+  height: 88.69vh;
 }
 .hero .container {
   display: flex;
@@ -354,12 +369,10 @@ header .container .search-user .user svg {
   font-weight: 600;
 }
 .hero .container .secound {
-  white-space: nowrap;
-  overflow: hidden;
   height: 457px;
   width: 85%;
-  align-self: flex-end;
   position: relative;
+  overflow: hidden;
 }
 @media (max-width: 992px) {
   .hero .container .secound {
@@ -372,14 +385,19 @@ header .container .search-user .user svg {
     height: 393px;
   }
 }
-.hero .container .secound img {
+.hero .container .secound .slider {
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+.hero .container .secound .slider img {
   width: 100%;
   height: 100%;
   background-image: url(../img/image\ 20.png);
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 10px 10px 0 0;
-  transition: transform 0.3s ease;
+  border-radius: 10px;
 }
 
 .enrol {
@@ -461,7 +479,8 @@ header .container .search-user .user svg {
   border: 1.07px #D9DCE0 solid;
   margin-bottom: 30px;
 }
-.enrol .container .left .button {
+.enrol .container .left button {
+  border: none;
   align-self: flex-end;
   margin-top: 50px;
   width: 241px;
@@ -472,15 +491,13 @@ header .container .search-user .user svg {
   cursor: pointer;
   border-radius: 5px;
   background-color: #1B353D;
-}
-@media (max-width: 767px) {
-  .enrol .container .left .button {
-    width: 100%;
-  }
-}
-.enrol .container .left .button p {
   color: #FFFFFF;
   font-size: 16px;
+}
+@media (max-width: 767px) {
+  .enrol .container .left button {
+    width: 100%;
+  }
 }
 
 .offer .container > div {
@@ -502,24 +519,27 @@ header .container .search-user .user svg {
   padding: 121px 0 117px 0;
 }
 .trending .container .grid {
-  white-space: nowrap;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
 }
-.trending .container .grid .Course {
+.trending .container .grid .slider {
+  white-space: nowrap;
+}
+.trending .container .grid .slider .Course {
   border-radius: 10px;
   display: inline-block;
   width: 31.7094017094%;
   height: 302px;
   margin-right: 2.3931623932%;
   position: relative;
+  transform: translateX(-108%);
 }
 @media (max-width: 767px) {
-  .trending .container .grid .Course {
+  .trending .container .grid .slider .Course {
     height: 215px;
   }
 }
-.trending .container .grid .Course:not(.trending .container .grid .Course.active):after {
+.trending .container .grid .slider .Course:not(.trending .container .grid .slider .Course.active):after {
   border-radius: 10px;
   position: absolute;
   left: 0;
@@ -530,12 +550,12 @@ header .container .search-user .user svg {
   background-color: #000000;
   opacity: 0.5;
 }
-.trending .container .grid .Course img {
+.trending .container .grid .slider .Course img {
   border-radius: 10px;
   width: 100%;
   height: 100%;
 }
-.trending .container .grid .Course p {
+.trending .container .grid .slider .Course p {
   position: absolute;
   bottom: 12px;
   left: 24px;
@@ -544,7 +564,7 @@ header .container .search-user .user svg {
   font-size: 20px;
 }
 @media (max-width: 767px) {
-  .trending .container .grid .Course p {
+  .trending .container .grid .slider .Course p {
     font-size: 12px;
     left: 5px;
     bottom: 15px;
@@ -734,7 +754,7 @@ header .container .search-user .user svg {
 }
 @media (max-width: 992px) {
   .get-in-touch .container .print .left {
-    width: 90%;
+    width: 95%;
     margin-top: 60px;
   }
 }
@@ -798,9 +818,6 @@ header .container .search-user .user svg {
 }
 .get-in-touch .container .print .right {
   width: 52.5369978858%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   height: 512px;
 }
 @media (max-width: 992px) {
@@ -808,25 +825,37 @@ header .container .search-user .user svg {
     width: 100%;
   }
 }
-.get-in-touch .container .print .right input {
+.get-in-touch .container .print .right form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.get-in-touch .container .print .right form input,
+.get-in-touch .container .print .right form textarea {
   padding-left: 15px;
   width: 100%;
   height: 60px;
   border: 1px rgba(0, 0, 0, 0.1) solid;
   border-radius: 3.79px;
 }
-.get-in-touch .container .print .right input:nth-child(4) {
+.get-in-touch .container .print .right form input:nth-child(4),
+.get-in-touch .container .print .right form textarea:nth-child(4) {
   height: 155px;
 }
-.get-in-touch .container .print .right input::-moz-placeholder {
+.get-in-touch .container .print .right form input::-moz-placeholder, .get-in-touch .container .print .right form textarea::-moz-placeholder {
   color: rgba(0, 0, 0, 0.3);
   font-size: 20px;
 }
-.get-in-touch .container .print .right input::placeholder {
+.get-in-touch .container .print .right form input::placeholder,
+.get-in-touch .container .print .right form textarea::placeholder {
   color: rgba(0, 0, 0, 0.3);
   font-size: 20px;
 }
-.get-in-touch .container .print .right .button {
+.get-in-touch .container .print .right form textarea {
+  padding-top: 15px;
+}
+.get-in-touch .container .print .right button {
   width: 228px;
   height: 60px;
   display: flex;
@@ -834,15 +863,14 @@ header .container .search-user .user svg {
   align-items: center;
   cursor: pointer;
   border-radius: 5px;
+  border: none;
   background-color: #1B353D;
   align-self: flex-end;
-}
-.get-in-touch .container .print .right .button p {
   color: #FFFFFF;
   font-size: 22px;
 }
 @media (max-width: 767px) {
-  .get-in-touch .container .print .right .button {
+  .get-in-touch .container .print .right button {
     width: 100%;
   }
 }
@@ -965,6 +993,7 @@ footer .container .last div .button p {
 }
 
 .up {
+  position: fixed;
   bottom: 20px;
   right: 20px;
   width: 45px;
@@ -975,7 +1004,34 @@ footer .container .last div .button p {
   align-items: center;
   border-radius: 10px;
   cursor: pointer;
+  transition: opacity 0.6s ease;
 }
 .up svg {
   color: #1D2319;
+}
+
+.percentage {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #3B7586;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000000;
+  color: black;
+  box-shadow: 0px 0px 20px 0 black;
+  transition: opacity 0.6s ease;
+}
+.percentage div {
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 }/*# sourceMappingURL=style.css.map */

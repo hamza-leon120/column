@@ -1,8 +1,8 @@
 import CoButton from "./CoButton"
 import Online from "./Online"
-function Offer () {
+function Offer (prop) {
     return(
-        <section className="offer">
+        <section className="offer" ref={function(ele){return prop.data[2] = ele}}>
             <div className="container">
                 <p className="heading">What we offer</p>
                 <div>

@@ -2,9 +2,9 @@ import { faFacebook,faXTwitter,faInstagram,faLinkedinIn  } from "@fortawesome/fr
 import { FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import imgOne from '../img/twentyseven.jpg'
 import CoButton from "./CoButton"
-function Footer (){
+function Footer (prop){
     return(
-        <footer>
+        <footer ref={function(ele){return prop.data[9] = ele}}>
             <div className="container">
                 <div className="print">
                     <div className="left">
