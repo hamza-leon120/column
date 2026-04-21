@@ -1,65 +1,69 @@
-# 📋 Column
+# Column — Online Learning Platform
 
-> A modern React-based web application featuring a clean column-style layout for organizing and displaying content with a smooth, responsive user experience.
-
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-blue?style=for-the-badge)](https://hamza-leon120.github.io/column/)
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/hamza-leon120/column)
+A responsive, multi-section educational landing page built with **React** and **SCSS**. The project showcases smooth scroll animations, interactive image sliders, a contact form, and a dynamic scroll progress indicator.
 
 ---
 
 ## 🚀 Live Demo
 
-👉 [https://hamza-leon120.github.io/column/](https://hamza-leon120.github.io/column/)
+[hamza-leon120.github.io/my-profail](https://hamza-leon120.github.io/my-profail/)
 
 ---
 
-## 📸 Preview
+## 📸 Features
 
-### 🖥️ Desktop
-![Desktop Preview](./src/img/Screenshot.png)
-
-### 📱 Mobile
-![Mobile Preview](./src/img/mobail-Screenshot.png)
-
-
----
-
-## ✨ Features
-
-- 📐 Clean and structured column-based layout
-- 📱 Fully responsive — works on all screen sizes
-- ⚛️ Built with React and modern JavaScript (ES6+)
-- 🧩 Modular component architecture
-- 🎨 Styled with CSS / SCSS for a polished look
-- ⚡ Fast development environment with Create React App
+- **Sticky Header** — fades out on scroll then reappears as a fixed navbar, with a responsive hamburger menu
+- **Hero Slider** — manual image carousel with left/right navigation
+- **Trending Courses** — infinite-loop carousel with clone-based seamless animation
+- **Recent Publications** — sliding grid of publication cards
+- **Enrolment Form** — validated form with name, email, and phone (Algerian format pattern)
+- **Get In Touch** — contact form with name, email, subject, and message fields
+- **Scroll Animations** — sections fade and slide in using `IntersectionObserver`
+- **Scroll Progress Indicator** — conic-gradient circle showing page read percentage
+- **Back to Top Button** — smooth scroll to top, visible after scrolling 300px
+- **Footer** — social links, contact info, and email subscribe input
 
 ---
 
-## 🛠️ Built With
-
-| Technology | Purpose |
-|------------|---------|
-| **React** | UI framework |
-| **JavaScript (ES6+)** | Application logic |
-| **SCSS / CSS** | Styling & layout |
-| **HTML5** | Markup |
-| **GitHub Pages** | Hosting & deployment |
-
----
-
-## 📂 Project Structure
+## 🗂️ Project Structure
 
 ```
-column/
-├── public/               # Static assets & HTML template
-├── src/                  # React source code
-│   ├── img/              # Images & screenshots
-│   └── ...               # Components, styles, logic
-├── .gitignore
-├── package.json          # Project dependencies & scripts
-├── package-lock.json
-└── README.md
+src/
+├── components/
+│   ├── Header.js            # Sticky nav with smooth scroll links
+│   ├── Hero.js              # Hero section with image slider
+│   ├── Enrol.js             # Enrolment section with form
+│   ├── Offer.js             # What we offer section
+│   ├── Trending.js          # Trending courses infinite carousel
+│   ├── Exams.js             # Online exams section
+│   ├── Publication.js       # Publications section
+│   ├── Recent.js            # Recent publications slider
+│   ├── Intructors.js        # Instructors grid
+│   ├── GetInTouch.js        # Contact form section
+│   ├── Footer.js            # Footer with subscribe input
+│   ├── CoButton.js          # Reusable button component
+│   ├── Online.js            # Reusable text + CTA block
+│   ├── ScrollPercentage.js  # Circular scroll progress indicator
+│   ├── Up.js                # Back to top button
+│   └── Sections.js          # Renders all page sections
+├── styles/
+│   ├── style.scss           # Main stylesheet
+│   ├── _layout.scss         # Layout variables and grid
+│   └── _mixin.scss          # SCSS mixins
+└── App.js                   # Root component with IntersectionObserver
 ```
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Usage |
+|---|---|
+| React | Component-based UI |
+| SCSS | Styling and responsive layout |
+| FontAwesome | Icons (brands + solid) |
+| IntersectionObserver API | Scroll-triggered animations |
+| CSS transforms | Sliders and carousels |
 
 ---
 
@@ -67,66 +71,66 @@ column/
 
 ### Prerequisites
 
-Make sure you have **Node.js** and **npm** installed on your machine.
+- Node.js >= 14
+- npm or yarn
 
 ### Installation
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/hamza-leon120/column.git
+# Clone the repository
+git clone https://github.com/hamza-leon120/your-repo-name.git
 
-# 2. Navigate into the project folder
-cd column
+# Navigate into the project
+cd your-repo-name
 
-# 3. Install dependencies
+# Install dependencies
 npm install
-```
 
-### Running Locally
-
-```bash
+# Start the development server
 npm start
 ```
 
-Then open [http://localhost:3000](http://localhost:3000) in your browser. The page will reload automatically when you make changes.
+The app will run at `http://localhost:3000`.
+
+### Build for Production
+
+```bash
+npm run build
+```
 
 ---
 
-## 📜 Available Scripts
+## 📋 Component Overview
 
-| Command | Description |
-|---------|-------------|
-| `npm start` | Runs the app in development mode |
-| `npm test` | Launches the test runner |
-| `npm run build` | Builds the app for production |
-| `npm run eject` | Ejects the CRA configuration |
+### `App.js`
+Sets up a shared `allSection` ref array and an `IntersectionObserver` that triggers fade-in animations when sections enter the viewport (threshold: 30%).
+
+### `Header.js`
+- Hamburger menu toggles nav on mobile
+- Smooth scrolls to section by matching `innerHTML` to element `id`
+- Fades out between scroll positions 200–500px, then re-appears as fixed
+
+### `Hero.js`
+Manual image slider using `translateX` calculated from the container's computed width.
+
+### `Trending.js`
+Infinite carousel using cloned first/last slides. Resets position silently using a 0s transition timeout.
+
+### `Recent.js`
+Sliding grid where slide width is computed from the parent's width plus card margin.
+
+### `ScrollPercentage.js`
+Calculates `(scrollY + windowHeight) / pageHeight * 100` and renders it as a `conic-gradient` circle.
 
 ---
 
-## 🔮 Future Improvements
+## 🤝 Author
 
-- 🖱️ Drag & drop column reordering
-- 🌙 Dark mode support
-- 🗂️ Better state management (Redux / Zustand)
-- 🎛️ More layout customization options
-- 🚀 Performance optimizations
-
----
-
-## 👤 Author
-
-**Aymen (Hamza)**
-
-- 🐙 GitHub: [@hamza-leon120](https://github.com/hamza-leon120)
-- 📧 Email: [haaymen20@gmail.com](mailto:haaymen20@gmail.com)
-- 📍 Algeria
+**Aymen** — Junior Frontend Developer  
+[LinkedIn](https://www.linkedin.com/in/your-profile) · [Portfolio](https://hamza-leon120.github.io/my-profail/) · [Upwork](https://www.upwork.com/freelancers/your-profile)
 
 ---
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-<p align="center">Made with ❤️ by <a href="https://github.com/hamza-leon120">Aymen</a></p>
+This project is open source and available under the [MIT License](LICENSE).
