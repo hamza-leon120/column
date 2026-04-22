@@ -10,6 +10,16 @@ A responsive, multi-section educational landing page built with **React** and **
 
 ---
 
+## 📸 Screenshots
+
+### 🖥️ Desktop Preview
+![Desktop Preview](/src/img/proScreenshot.png)
+
+### 📱 Mobile View  
+![Mobile Preview](/src/img/mobail-Screenshot.png)
+
+---
+
 ## 📸 Features
 
 - **Sticky Header** — fades out on scroll then reappears as a fixed navbar, with a responsive hamburger menu
