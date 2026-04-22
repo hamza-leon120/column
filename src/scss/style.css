@@ -181,7 +181,7 @@ header .container {
 header .container > svg:nth-child(1) {
   display: none;
 }
-@media (max-width: 992px) {
+@media (max-width: 767px) {
   header .container > svg:nth-child(1) {
     display: block;
     font-size: 30px;

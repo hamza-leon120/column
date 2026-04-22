@@ -21,7 +21,7 @@ header {
         height: 105px;
         > svg:nth-child(1) {
             display: none;
-            @include medai (max-medium ) {
+            @include medai (mobail ) {
                 display: block;
                 font-size: 30px;
                 color: #000000;
