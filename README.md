@@ -6,14 +6,14 @@ A responsive, multi-section educational landing page built with **React** and **
 
 ## 🚀 Live Demo
 
-[hamza-leon120.github.io/my-profail](https://hamza-leon120.github.io/my-profail/)
+[https://hamza-leon120.github.io/column/](https://hamza-leon120.github.io/column/)
 
 ---
 
 ## 📸 Screenshots
 
 ### 🖥️ Desktop Preview
-![Desktop Preview](/src/img/proScreenshot.png)
+![Desktop Preview](/src/img/Screenshot.png)
 
 ### 📱 Mobile View  
 ![Mobile Preview](/src/img/mobail-Screenshot.png)

@@ -293,6 +293,7 @@ header .container .search-user .user svg {
   .hero .container {
     flex-direction: column;
     gap: 50px;
+    justify-content: space-around;
   }
 }
 @media (max-width: 767px) {
